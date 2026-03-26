@@ -1,9 +1,10 @@
 # Builds with Vite and pushes ./dist to the gh-pages branch.
-# GitHub repo → Settings → Pages → Build and deployment → Source:
-#   "Deploy from a branch" → Branch: gh-pages → Folder: / (root)
 #
-# "Compiled successfully" in your IDE only builds locally. The live site uses
-# whatever this workflow publishes — not the repo root index.html.
+# REQUIRED: Settings → Pages → Source = "Deploy from a branch" → gh-pages / (root)
+# Do NOT set Pages source to "GitHub Actions" for this workflow — use the branch only.
+# Otherwise the site may show a blank page (main branch serves dev index.html → /src/main.jsx).
+#
+# "Compiled successfully" locally does not deploy; the live site is whatever gh-pages contains.
 
 name: Deploy site to gh-pages
 

@@ -48,12 +48,23 @@ The workflow **`.github/workflows/deploy-pages.yml`** runs on push to **`main`**
 
 1. Push the workflow to GitHub and wait for **Actions** → **Deploy site to gh-pages** to finish **green** (first run creates the `gh-pages` branch).
 2. **Settings → Pages → Build and deployment**
-3. Under **Source**, choose **Deploy from a branch** (not only “GitHub Actions” if the UI offers both).
+3. Under **Source**, choose **Deploy from a branch** (see **critical note** below).
 4. **Branch:** `gh-pages`, **Folder:** `/ (root)` → **Save**.
 
 Your site URL: **`https://<username>.github.io/`** for a **`username.github.io`** repository.
 
-If you previously set **Source** to **GitHub Actions** with a different workflow, **switch** to **Deploy from branch** → `gh-pages` so it matches this repo’s workflow.
+#### Critical: blank page with correct title in the tab
+
+If **`https://abagels96.github.io/`** shows **no content** but the **tab title** is “Abigail Bales · Full-Stack Developer”, GitHub is almost certainly serving **`main`** (repo root) instead of **`gh-pages`**.
+
+- Root **`index.html`** loads **`/src/main.jsx`** — that only works with **`npm run dev`**, not on static hosting, so **`#root` stays empty**.
+- The **built** site (on **`gh-pages`**) loads **`/assets/index-….js`** instead.
+
+**You must not use “GitHub Actions” as the Pages source** for this setup. This repo deploys with **peaceiris** to the **`gh-pages` branch**. If **Source** is **GitHub Actions**, GitHub also runs **“pages build and deployment”** (you may see both in the Actions list). That path does **not** publish this project’s **`dist/`** the same way and can leave the site **blank**.
+
+**Fix:** **Settings → Pages → Source → Deploy from a branch → `gh-pages` → `/ (root)`** — and **turn off** GitHub Actions as the publishing source if the UI still shows it.
+
+**Verify:** On the live site, **View Page Source** (Ctrl+U). You should see **`<script … src="/assets/index-…">`**. If you see **`/src/main.jsx`**, Pages is still pointed at the wrong branch.
 
 ### If the site still doesn’t update
 
