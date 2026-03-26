@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@9..144,400..800&family=Figtree:ital,wght@0,400..700;1,400..700&display=swap');
+
+:root {
+  /* Warm “print shop” palette — avoids dark/cyan dev-template defaults */
+  --paper: #f4efe6;
+  --paper-deep: #e8e0d4;
+  --ink: #1b1816;
+  --ink-soft: #4a433c;
+  --muted: #6f665c;
+  --accent: #7c2d12;
+  --accent-hover: #5c210c;
+  --accent-tint: rgba(124, 45, 18, 0.08);
+  --pine: #1e3a2f;
+  --pine-tint: rgba(30, 58, 47, 0.06);
+  --border: rgba(27, 24, 22, 0.12);
+  --border-strong: rgba(27, 24, 22, 0.22);
+  --shadow-hard: 6px 6px 0 var(--ink);
+  --shadow-soft: 0 18px 48px rgba(27, 24, 22, 0.08);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Figtree', system-ui, sans-serif;
+  --max: 920px;
+  --header-h: 72px;
+  --radius: 4px;
+
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  background-color: var(--paper);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 640px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--paper-deep);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow-hard);
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
