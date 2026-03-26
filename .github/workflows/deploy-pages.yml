@@ -1,23 +1,26 @@
-# Builds the Vite app and deploys the contents of `dist/` to GitHub Pages.
-# Repo Settings → Pages → Build and deployment → Source: GitHub Actions
+# Builds with Vite and pushes ./dist to the gh-pages branch.
+# GitHub repo → Settings → Pages → Build and deployment → Source:
+#   "Deploy from a branch" → Branch: gh-pages → Folder: / (root)
+#
+# "Compiled successfully" in your IDE only builds locally. The live site uses
+# whatever this workflow publishes — not the repo root index.html.
 
-name: Deploy to GitHub Pages
+name: Deploy site to gh-pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
+  workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
+  group: github-pages-deploy
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -35,18 +38,9 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy dist to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: dist
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          force_orphan: true

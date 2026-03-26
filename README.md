@@ -33,18 +33,33 @@ Components under **`src/components/`** handle layout; adjust **`src/App.css`** a
 
 ## Deploying to GitHub Pages
 
-This repo’s **root `index.html` is for Vite dev only** — it loads `/src/main.jsx`, which does not exist on the static host. The **built site** is whatever **`npm run build`** writes to **`dist/`** (bundled JS/CSS). If GitHub Pages is pointed at the **source branch root** instead of a production build, the site will load but show a **blank page**.
+**Local `npm run preview` works** because it serves **`dist/`** after a build. **GitHub** only shows the site if Pages is serving the **same built files** — not the repo root (which contains dev `index.html` → `/src/main.jsx` and **looks blank**).
 
-### Recommended: GitHub Actions (included)
+**`dist/` is gitignored**, so the live site must come from **CI** (or a manual upload of `dist/`).
 
-The workflow **`.github/workflows/deploy-pages.yml`** runs on every push to **`main`**: `npm ci` → `npm run build` → uploads **`dist/`** to Pages.
+### How this repo deploys (recommended)
 
-1. Push this workflow to **`main`**.
-2. In the repo on GitHub: **Settings → Pages → Build and deployment**.
-3. Set **Source** to **GitHub Actions** (not “Deploy from a branch” with `/ (root)` on `main`, unless that branch only contains a built `dist/` — it does not here).
-4. Open the **Actions** tab and confirm the **Deploy to GitHub Pages** run succeeds. The site URL will be **`https://<username>.github.io/`** for a **`username.github.io`** repository.
+The workflow **`.github/workflows/deploy-pages.yml`** runs on push to **`main`** or **`master`** (and can be run manually under **Actions → Run workflow**):
 
-`dist/` is listed in **`.gitignore`**, so the build output is **not** committed; the Action must produce it on each deploy.
+1. `npm ci` → `npm run build`
+2. Pushes the contents of **`dist/`** to a **`gh-pages`** branch (via [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages)).
+
+**Configure GitHub Pages once:**
+
+1. Push the workflow to GitHub and wait for **Actions** → **Deploy site to gh-pages** to finish **green** (first run creates the `gh-pages` branch).
+2. **Settings → Pages → Build and deployment**
+3. Under **Source**, choose **Deploy from a branch** (not only “GitHub Actions” if the UI offers both).
+4. **Branch:** `gh-pages`, **Folder:** `/ (root)` → **Save**.
+
+Your site URL: **`https://<username>.github.io/`** for a **`username.github.io`** repository.
+
+If you previously set **Source** to **GitHub Actions** with a different workflow, **switch** to **Deploy from branch** → `gh-pages` so it matches this repo’s workflow.
+
+### If the site still doesn’t update
+
+- **Actions tab:** open the latest run; fix any red **Build** or **Deploy** step (e.g. `npm ci` failing if `package-lock.json` isn’t committed).
+- **Private repo:** on a free GitHub account, **GitHub Pages may require a public repository** for `username.github.io` — check [GitHub Pages docs](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages) for your plan.
+- **Cache:** hard-refresh or try an incognito window after a successful deploy.
 
 ### Local check before pushing
 
@@ -53,15 +68,13 @@ npm run build
 npm run preview
 ```
 
-Open the printed URL and confirm the portfolio loads.
-
 ### `base` URL
 
-For a user site at **`https://Abagels96.github.io/`**, Vite’s default **`base: '/'`** is correct. Only set **`base: '/repo-name/'`** if the site is published under a project URL (not the case for `username.github.io`).
+For **`https://<username>.github.io/`**, Vite’s default **`base: '/'`** is correct.
 
 ### `.nojekyll`
 
-**`public/.nojekyll`** is copied into **`dist/`** so GitHub Pages does not run **Jekyll** on the static files (which can break or hide assets).
+**`public/.nojekyll`** is copied into **`dist/`** so GitHub Pages does not run **Jekyll** on the static files.
 
 ## License
 
