@@ -18,17 +18,6 @@ export function Hero({ name, title, location, tagline }) {
         </h1>
         <p className="hero__role">{title}</p>
         <p className="hero__tagline">{tagline}</p>
-        <div className="hero__actions">
-          <a className="btn btn--fill" href="#stack">
-            View stack
-          </a>
-          <a className="btn btn--line" href="#portfolios">
-            Portfolios
-          </a>
-          <a className="btn btn--line" href="#connect">
-            Contact
-          </a>
-        </div>
       </div>
     </section>
   )
