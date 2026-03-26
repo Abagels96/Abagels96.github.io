@@ -33,10 +33,35 @@ Components under **`src/components/`** handle layout; adjust **`src/App.css`** a
 
 ## Deploying to GitHub Pages
 
-1. Run `npm run build`.
-2. Publish the **`dist/`** folder as the site source for your Pages branch (often `main` with `/ (root)` or `gh-pages`, depending on your repo settings).
+This repo’s **root `index.html` is for Vite dev only** — it loads `/src/main.jsx`, which does not exist on the static host. The **built site** is whatever **`npm run build`** writes to **`dist/`** (bundled JS/CSS). If GitHub Pages is pointed at the **source branch root** instead of a production build, the site will load but show a **blank page**.
 
-If the site were ever served from a subpath, you would set `base` in `vite.config.js`; for a standard **`username.github.io`** user site, the default base **`/`** is correct.
+### Recommended: GitHub Actions (included)
+
+The workflow **`.github/workflows/deploy-pages.yml`** runs on every push to **`main`**: `npm ci` → `npm run build` → uploads **`dist/`** to Pages.
+
+1. Push this workflow to **`main`**.
+2. In the repo on GitHub: **Settings → Pages → Build and deployment**.
+3. Set **Source** to **GitHub Actions** (not “Deploy from a branch” with `/ (root)` on `main`, unless that branch only contains a built `dist/` — it does not here).
+4. Open the **Actions** tab and confirm the **Deploy to GitHub Pages** run succeeds. The site URL will be **`https://<username>.github.io/`** for a **`username.github.io`** repository.
+
+`dist/` is listed in **`.gitignore`**, so the build output is **not** committed; the Action must produce it on each deploy.
+
+### Local check before pushing
+
+```bash
+npm run build
+npm run preview
+```
+
+Open the printed URL and confirm the portfolio loads.
+
+### `base` URL
+
+For a user site at **`https://Abagels96.github.io/`**, Vite’s default **`base: '/'`** is correct. Only set **`base: '/repo-name/'`** if the site is published under a project URL (not the case for `username.github.io`).
+
+### `.nojekyll`
+
+**`public/.nojekyll`** is copied into **`dist/`** so GitHub Pages does not run **Jekyll** on the static files (which can break or hide assets).
 
 ## License
 
