@@ -7,6 +7,7 @@ export const meta = {
   tagline:
     'Building scalable web applications from frontend to backend — maintainable systems from UI to API.',
   linkedIn: 'https://www.linkedin.com/in/abales-1a868497/',
+  github: 'https://github.com/Abagels96',
 }
 
 /**

@@ -24,7 +24,7 @@ The dev script uses [kill-port](https://www.npmjs.com/package/kill-port) so Vite
 
 Most copy and lists live in **`src/content.js`**:
 
-- `meta` — name, title, location, tagline, LinkedIn URL
+- `meta` — name, title, location, tagline, LinkedIn URL, GitHub profile URL
 - `stackAreas` — unified stack cards (languages + frameworks per area)
 - `portfolioItems` — portfolio entries (title, description, links)
 - `workflowNote` — short “how I work” aside

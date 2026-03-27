@@ -488,7 +488,66 @@ main {
 }
 
 .contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   max-width: 38rem;
+}
+
+/* Contact: matching branded buttons with icons */
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.45rem;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 650;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  border: 2px solid;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    transform 0.12s,
+    box-shadow 0.12s,
+    filter 0.15s,
+    background 0.15s;
+}
+
+.contact-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.contact-btn__icon {
+  flex-shrink: 0;
+  display: block;
+}
+
+.contact-btn--linkedin {
+  background: #0a66c2;
+  border-color: #0a66c2;
+  color: #fff;
+  box-shadow: 5px 5px 0 rgba(10, 102, 194, 0.28);
+}
+
+.contact-btn--linkedin:hover {
+  filter: brightness(1.08);
+  color: #fff;
+}
+
+.contact-btn--github {
+  background: #1b1f23;
+  border-color: #1b1f23;
+  color: #fff;
+  box-shadow: 5px 5px 0 rgba(27, 31, 35, 0.28);
+}
+
+.contact-btn--github:hover {
+  filter: brightness(1.1);
+  color: #fff;
 }
 
 .footer-copy {

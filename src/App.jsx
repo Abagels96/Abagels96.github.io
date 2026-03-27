@@ -26,7 +26,11 @@ function App() {
         <PortfolioSection items={portfolioItems} />
         <WorkflowNote text={workflowNote} />
       </main>
-      <ConnectFooter name={meta.name} linkedIn={meta.linkedIn} />
+      <ConnectFooter
+        name={meta.name}
+        linkedIn={meta.linkedIn}
+        github={meta.github}
+      />
     </div>
   )
 }
