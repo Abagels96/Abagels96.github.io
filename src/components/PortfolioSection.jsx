@@ -8,7 +8,7 @@ export function PortfolioSection({ items }) {
         <div>
           <h2 id="portfolios-heading">Portfolios</h2>
           <p className="section-head__lead">
-            Featured work and side projects — swap the samples below for your own case studies.
+            Selected projects and live demos.
           </p>
         </div>
       </div>

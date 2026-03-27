@@ -41,18 +41,11 @@ export const stackAreas = [
  */
 export const portfolioItems = [
   {
-    id: 'project-one',
-    title: 'Project title',
+    id: 'mom-self-care-tracker',
+    title: "Mom's Self-Care Tracker",
     description:
-      'One or two sentences: problem, your role, stack, and outcome. Replace this entry in src/content.js.',
-    links: [{ label: 'GitHub', href: 'https://github.com/Abagels96' }],
-  },
-  {
-    id: 'project-two',
-    title: 'Another project',
-    description:
-      'Describe the product or library, what you shipped, and technologies used.',
-    links: [{ label: 'Repository', href: 'https://github.com/Abagels96' }],
+      'Full-stack web app for self-care tracking, progress, and baby-related flows — sign-in, dashboard, and profile. Deployed on Railway.',
+    links: [{ label: 'Live app', href: 'https://momtracker.up.railway.app/login' }],
   },
 ]
 
