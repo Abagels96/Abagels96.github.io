@@ -1,84 +1,131 @@
-/** Essential copy from the GitHub profile README */
+/** Site copy: edit here to update the live portfolio. */
 
 export const meta = {
   name: 'Abigail Bales',
   title: 'Full-Stack Software Developer',
   location: 'St. Louis',
-  tagline:
-    'Building scalable web applications from frontend to backend. Maintainable systems from UI to API.',
-  linkedIn: 'https://www.linkedin.com/in/abales-1a868497/',
-  github: 'https://github.com/Abagels96',
+  /** Short line above identity in hero */
+  eyebrow: 'Full-stack developer',
+  heroHeadline: 'I ship products end to end, from UI to API.',
+  /** One sharp supporting line; keep short */
+  heroLead:
+    'Interfaces people can follow, state they can reason about, and backends the next developer won’t dread opening.',
+  primaryCta: { label: 'View Projects', href: '#work' },
+}
+
+export const about = {
+  title: 'About',
+  paragraphs: [
+    'I focus on turning fuzzy requirements into maintainable systems: structured components, predictable state, and APIs that other developers can extend without a rewrite.',
+    'Recent work spans Next.js and React apps, mock-to-production flows, and full-stack features with auth, dashboards, and deployable pipelines. I use AI tools to move faster on exploration and refactors, not as a substitute for design judgment or review.',
+  ],
 }
 
 /**
- * Full-stack profile (README-aligned), with recent project tooling folded in:
- * Next.js / TypeScript apps (Signal Desk, Orbit Money, AbailsShop, portfolio-next)
- * and this Vite + React portfolio site.
+ * Curated skills: `highlights` get visual priority; `rest` stays core but quieter.
+ * Add breadth back in `supporting.items` if a role calls for it.
  */
-export const stackAreas = [
-  {
-    id: 'frontend',
-    title: 'Frontend',
-    body: 'Languages: HTML5, CSS3, JavaScript (ES6+), TypeScript. Frameworks & UI: React, Vue, Angular, Next.js, Nuxt.js, Redux, React Query; Tailwind CSS & SASS. Recent work also ships with Next.js 16, React 19, Tailwind CSS v4, Zustand, Lucide React, React Hook Form, Zod, clsx, tailwind-merge, and ESLint (Next config); Vite + React for this portfolio.',
+export const skillGroups = {
+  core: {
+    label: 'Core Stack',
+    intro:
+      'What I reach for first on full-stack web work: typed UI, a modern React surface, and data that outlasts the first deploy.',
+    highlights: ['TypeScript', 'React', 'Next.js'],
+    rest: ['Node.js', 'PostgreSQL', 'Git'],
   },
-  {
-    id: 'backend',
-    title: 'Backend',
-    body: 'Languages: Java, JavaScript (Node.js), Python, C#, Go. Frameworks & runtimes: Node.js, Express, Spring Boot, Django, FastAPI, Flask, .NET Core.',
+  supporting: {
+    label: 'Supporting Tools',
+    intro: 'Pulled in when deployment, schema, or integration work needs them, not sprinkled by default.',
+    items: ['Tailwind CSS', 'Docker', 'AWS', 'Prisma', 'GraphQL', 'Python'],
   },
-  {
-    id: 'data',
-    title: 'Data & APIs',
-    body: 'Protocols & query: SQL, GraphQL, REST. Stores & ORMs: PostgreSQL, MySQL, MongoDB, Redis; SQL & NoSQL with Prisma, Sequelize, Hibernate, SQLAlchemy.',
+  exploring: {
+    label: 'Currently Exploring',
+    intro: 'Small bets, not a roadmap slide.',
+    items: ['React Compiler', 'Edge runtimes', 'Zustand'],
   },
-  {
-    id: 'delivery',
-    title: 'Delivery & tooling',
-    body: 'Markup & config: JSON, YAML, XML. Shell: Bash, PowerShell. Operations: Git, Docker, Linux, AWS; CI/CD, RESTful APIs, microservices, Agile/Scrum, unit & integration testing. App delivery with npm, Next.js and Vite builds, and experimental React Compiler on select TypeScript repos.',
-  },
-]
+}
+
+/** Optional: section heading copy for the skills block */
+export const skillsIntro = {
+  eyebrow: 'Expertise',
+  title: 'Stack & depth',
+  lead:
+    'A short list on purpose. Core is what I ship with most; everything else is deliberate support.',
+}
+
+/** Section heading above the project grid */
+export const portfolioIntro = {
+  eyebrow: 'Case studies',
+  title: 'Selected work',
+  lead:
+    'Products and experiments where the goal was clear delivery: ship something usable, measurable, and easy to pick up next.',
+}
 
 /**
- * Portfolio: edit links in this file when new deploys go live.
+ * Portfolio work: preview images are PNGs captured from `liveUrl` (see
+ * npm run capture:previews). SVGs with the same `id` are kept as fallbacks.
+ * `githubUrl` can point at a specific repo or your profile when code is private.
  */
 export const portfolioItems = [
   {
-    id: 'mom-self-care-tracker',
-    title: "Mom's Self-Care Tracker",
-    description:
-      'Full-stack web app for self-care tracking, progress, and baby-related flows: sign-in, dashboard, and profile. Deployed on Railway.',
-    links: [{ label: 'Live app', href: 'https://momtracker.up.railway.app/login' }],
-  },
-  {
     id: 'signal-desk',
     title: 'Signal Desk',
-    description:
-      'Front-end-only AI content and productivity studio: prompt-based writing, refinement, drafts, templates, and planning workflows through mock AI logic and a creative control-room UI.',
-    links: [{ label: 'Live app', href: 'https://abagels96.github.io/signal-desk' }],
-  },
-  {
-    id: 'orbit-money',
-    title: 'Orbit Money',
-    description:
-      'Local-only personal finance OS: track transactions, budgets, savings goals, and insights through mock data in a premium dashboard experience.',
-    links: [{ label: 'Live app', href: 'https://abagels96.github.io/orbit-money' }],
+    impact:
+      'Turned a blank canvas into a shippable writing workspace: drafts, templates, and planning without waiting on a backend.',
+    stack: ['React', 'GitHub Pages', 'UX'],
+    liveUrl: 'https://abagels96.github.io/signal-desk',
+    githubUrl: 'https://github.com/Abagels96/signal-desk',
+    image: '/projects/signal-desk-preview.png',
   },
   {
     id: 'abailsshop',
     title: 'AbailsShop',
-    description:
-      'Mock-data e-commerce storefront and admin: browse products, cart, simulated checkout, and local product inventory (no backend).',
-    links: [{ label: 'Live app', href: 'https://abagels96.github.io/ecommerce' }],
+    impact:
+      'Proved storefront and admin flows end-to-end with mock data, so swapping in real payment and inventory is a config change, not a rewrite.',
+    stack: ['E-commerce', 'React', 'Mock APIs'],
+    liveUrl: 'https://abagels96.github.io/ecommerce',
+    githubUrl: 'https://github.com/Abagels96/ecommerce',
+    image: '/projects/abailsshop-preview.png',
+  },
+  {
+    id: 'orbit-money',
+    title: 'Orbit Money',
+    impact:
+      'Made budgets and goals legible in one screen so stakeholders could stress-test the product story before API spend.',
+    stack: ['Dashboard', 'Local-first', 'React'],
+    liveUrl: 'https://abagels96.github.io/orbit-money',
+    githubUrl: 'https://github.com/Abagels96/orbit-money',
+    image: '/projects/orbit-money-preview.png',
+  },
+  {
+    id: 'mom-self-care-tracker',
+    title: "Mom's Self-Care Tracker",
+    impact:
+      'Cut sign-up-to-dashboard friction to a single flow on Railway, so real users could track care without wiring spreadsheets.',
+    stack: ['Full-stack', 'Auth', 'Railway'],
+    liveUrl: 'https://momtracker.up.railway.app/login',
+    githubUrl: 'https://github.com/Abagels96/Assignment15',
+    image: '/projects/mom-self-care-tracker-preview.png',
   },
   {
     id: 'portfolio-next',
     title: 'Portfolio (Next.js)',
-    description:
-      'Next.js + TypeScript scaffold with Tailwind CSS v4, ESLint, and experimental React Compiler: starting point for a deployable portfolio site.',
-    links: [{ label: 'Live app', href: 'https://abagels96.github.io' }],
+    impact:
+      'Locked in a deployable Next.js + TS baseline with lint and Tailwind v4, so the marketing site can grow without another scaffold.',
+    stack: ['Next.js', 'TypeScript', 'Tailwind v4'],
+    liveUrl: 'https://abagels96.github.io',
+    githubUrl: 'https://github.com/Abagels96/Abagels96.github.io',
+    image: '/projects/portfolio-next-preview.png',
   },
 ]
 
-/** README-style note on AI-assisted workflow */
-export const workflowNote =
-  'Comfortable with AI-assisted editors, copilots, and modern prototyping tools, used to speed up exploration, refactors, and UI iteration without replacing solid architecture and review.'
+export const contact = {
+  title: 'Let’s build something solid',
+  lead:
+    'Hiring, collaborating, or need a pragmatic read on frontend, API, or delivery? Reach out on LinkedIn or see recent work on GitHub.',
+}
+
+export const social = {
+  linkedIn: 'https://www.linkedin.com/in/abales-1a868497/',
+  github: 'https://github.com/Abagels96',
+}
