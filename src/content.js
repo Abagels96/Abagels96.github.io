@@ -54,28 +54,28 @@ export const portfolioItems = [
     title: 'Signal Desk',
     description:
       'Front-end-only AI content and productivity studio: prompt-based writing, refinement, drafts, templates, and planning workflows through mock AI logic and a creative control-room UI.',
-    links: [{ label: 'Coming soon', href: '#' }],
+    links: [{ label: 'Live app', href: 'https://abagels96.github.io/signal-desk' }],
   },
   {
     id: 'orbit-money',
     title: 'Orbit Money',
     description:
       'Local-only personal finance OS: track transactions, budgets, savings goals, and insights through mock data in a premium dashboard experience.',
-    links: [{ label: 'Coming soon', href: '#' }],
+    links: [{ label: 'Live app', href: 'https://abagels96.github.io/orbit-money' }],
   },
   {
     id: 'abailsshop',
     title: 'AbailsShop',
     description:
       'Mock-data e-commerce storefront and admin: browse products, cart, simulated checkout, and local product inventory (no backend).',
-    links: [{ label: 'Coming soon', href: '#' }],
+    links: [{ label: 'Live app', href: 'https://abagels96.github.io/ecommerce' }],
   },
   {
     id: 'portfolio-next',
     title: 'Portfolio (Next.js)',
     description:
       'Next.js + TypeScript scaffold with Tailwind CSS v4, ESLint, and experimental React Compiler: starting point for a deployable portfolio site.',
-    links: [{ label: 'Coming soon', href: '#' }],
+    links: [{ label: 'Live app', href: 'https://abagels96.github.io' }],
   },
 ]
 
