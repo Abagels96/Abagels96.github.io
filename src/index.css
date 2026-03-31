@@ -1,41 +1,213 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@9..144,400..800&family=Figtree:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/*
+ * Design system: tokens (dark premium, developer portfolio)
+ *
+ * Primary (interactive): gold scale --color-primary / --color-primary-base / --color-primary-deep
+ * Accent (ambient only): cool indigo --color-accent-cool* in page gradients
+ * Background layers: --color-bg-base → --color-bg-surface → --color-bg-elevated → --color-bg-glass
+ * Typography: --text-hero, --text-h3, --text-body, --text-body-sm, --text-eyebrow, --text-label
+ * Spacing: --space-1…16, --section-padding-x/y, --section-gap-after-title
+ * Radius: --radius-xs…xl, --radius-pill; cards: --card-radius, --card-radius-sm
+ * Shadows: --shadow-sm/md/lg, --shadow-glow-primary*, --shadow-card-*
+ * Buttons: --btn-primary-* (gradient), --btn-ghost-*; components: .btn, .showcase-btn, .social-btn
+ * Cards: glass showcase (--card-* on .showcase-card), surface skills (--color-bg-card on .skill-card)
+ */
 
 :root {
-  /* Warm print shop palette; avoids dark/cyan dev-template defaults */
-  --paper: #f4efe6;
-  --paper-deep: #e8e0d4;
-  --ink: #1b1816;
-  --ink-soft: #4a433c;
-  --muted: #6f665c;
-  --accent: #7c2d12;
-  --accent-hover: #5c210c;
-  --accent-tint: rgba(124, 45, 18, 0.08);
-  --pine: #1e3a2f;
-  --pine-tint: rgba(30, 58, 47, 0.06);
-  --border: rgba(27, 24, 22, 0.12);
-  --border-strong: rgba(27, 24, 22, 0.22);
-  --shadow-hard: 6px 6px 0 var(--ink);
-  --shadow-soft: 0 18px 48px rgba(27, 24, 22, 0.08);
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'Figtree', system-ui, sans-serif;
-  --max: 920px;
-  --header-h: 72px;
-  --radius: 4px;
+  /* --- Color: background layers --- */
+  --color-bg-base: #070708;
+  --color-bg-surface: #0c0c0f;
+  --color-bg-elevated: rgba(255, 255, 255, 0.04);
+  --color-bg-glass: rgba(12, 12, 15, 0.78);
+  --color-bg-card: rgba(255, 255, 255, 0.02);
+  --color-bg-input: rgba(0, 0, 0, 0.18);
 
-  font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.6;
-  color: var(--ink-soft);
-  background-color: var(--paper);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* --- Color: text --- */
+  --color-text-primary: #f4f4f5;
+  --color-text-secondary: #c4c4cc;
+  /* Muted: ~4.6:1 on --color-bg-base for small UI text (WCAG AA body text on secondary) */
+  --color-text-muted: #9696a3;
+
+  /* --- Color: primary (brand gold, main interactive) --- */
+  --color-primary: #dfc056;
+  --color-primary-base: #c9a227;
+  --color-primary-deep: #9a7618;
+  --color-primary-glow: rgba(201, 162, 39, 0.35);
+  --color-primary-subtle: rgba(201, 162, 39, 0.1);
+  --color-primary-border: rgba(201, 162, 39, 0.45);
+  --color-border-primary-hover: rgba(201, 162, 39, 0.45);
+  --color-border-primary-soft: rgba(201, 162, 39, 0.28);
+  --color-border-primary-strong: rgba(201, 162, 39, 0.55);
+
+  /* --- Color: accent (secondary, ambient only) --- */
+  --color-accent-cool: rgba(99, 102, 241, 0.08);
+  --color-accent-cool-soft: rgba(99, 102, 241, 0.06);
+
+  /* --- Color: border --- */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
+  --color-border-muted: rgba(255, 255, 255, 0.06);
+
+  /* --- Color: social (LinkedIn) --- */
+  --color-social-linkedin: #0a66c2;
+  --color-social-linkedin-bg: rgba(10, 102, 194, 0.18);
+  --color-social-linkedin-border: rgba(10, 102, 194, 0.45);
+
+  /* Legacy aliases (components may reference these) */
+  --bg-deep: var(--color-bg-base);
+  --bg: var(--color-bg-surface);
+  --bg-elevated: var(--color-bg-elevated);
+  --bg-glass: var(--color-bg-glass);
+  --stroke: var(--color-border);
+  --stroke-strong: var(--color-border-strong);
+  --text: var(--color-text-primary);
+  --text-soft: var(--color-text-secondary);
+  --text-muted: var(--color-text-muted);
+  --accent: var(--color-primary-base);
+  --accent-soft: var(--color-primary-subtle);
+  --accent-glow: var(--color-primary-glow);
+  --accent-hover: var(--color-primary);
+
+  /* --- Typography --- */
+  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'SF Mono', monospace;
+
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-body-sm: 0.9375rem;
+  --text-body: 1rem;
+  --text-body-lg: 1.0625rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-h3: clamp(1.85rem, 4vw, 2.5rem);
+  --text-h2-contact: clamp(2rem, 4.5vw, 2.75rem);
+  --text-hero: clamp(2.15rem, 6.5vw, 3.35rem);
+  --text-eyebrow: 0.75rem;
+  --text-label: 0.78rem;
+  --text-caption: 0.65rem;
+
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.65;
+  --leading-loose: 1.75;
+
+  --tracking-tight: -0.03em;
+  --tracking-ui: -0.02em;
+  --tracking-wide: 0.06em;
+  --tracking-label: 0.14em;
+  --tracking-eyebrow: 0.16em;
+  --tracking-eyebrow-section: 0.14em;
+
+  /* --- Spacing scale (4px base) --- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  --section-padding-y: clamp(2.75rem, 7vw, 4.5rem);
+  --section-padding-x: clamp(1rem, 4vw, 1.75rem);
+  --section-padding-y-hero: clamp(2.75rem, 10vw, 5.5rem);
+  --section-gap-after-title: 2.5rem;
+
+  /* Breakpoints (reference): sm 480, md 640, tablet 768, nav 900, lg 1200 */
+  --layout-max: 1080px;
+  --layout-gutter: 3rem;
+  --header-h: 64px;
+
+  /* --- Radius --- */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 22px;
+  --radius-pill: 999px;
+
+  /* Legacy */
+  --radius: var(--radius-md);
+  --radius-sm-legacy: var(--radius-sm);
+
+  /* --- Shadows --- */
+  --shadow-inset-hairline: 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  --shadow-xs: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 4px 24px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 20px 56px rgba(0, 0, 0, 0.55);
+  --shadow-xl: 0 24px 80px rgba(0, 0, 0, 0.45);
+  --shadow-glow-primary: 0 12px 40px rgba(201, 162, 39, 0.25);
+  --shadow-glow-primary-lg: 0 16px 48px rgba(201, 162, 39, 0.35);
+  --shadow-accent-ambient: 0 0 48px rgba(201, 162, 39, 0.06);
+  --shadow-card-hover: 0 20px 56px rgba(0, 0, 0, 0.55);
+  --shadow-card-featured: 0 4px 28px rgba(0, 0, 0, 0.4);
+  --shadow-card-featured-hover: 0 24px 64px rgba(0, 0, 0, 0.58);
+  --shadow-skill-hover: 0 12px 40px rgba(0, 0, 0, 0.25);
+
+  --shadow-soft: var(--shadow-xl);
+
+  /* Section-synced ambient orbs (defaults = hero; useAmbientTheme updates position) */
+  --ambient-gold-x: 72%;
+  --ambient-gold-y: 6%;
+  --ambient-cool-x: 90%;
+  --ambient-cool-y: 18%;
+  --duration-ambient: 1.15s;
+
+  /* Legacy full-page gradient (unused when AmbientLayer is mounted; kept for reference) */
+  --bg-gradient-ambient:
+    radial-gradient(ellipse 120% 80% at 50% -30%, rgba(201, 162, 39, 0.09), transparent 55%),
+    radial-gradient(ellipse 80% 50% at 100% 20%, var(--color-accent-cool-soft), transparent 45%),
+    radial-gradient(ellipse 60% 40% at 0% 80%, rgba(201, 162, 39, 0.05), transparent 50%),
+    var(--color-bg-base);
+
+  /* --- Motion --- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-default: ease;
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 350ms;
+  --duration-reveal: 620ms;
+  --duration-hero-enter: 0.72s;
+
+  /* --- Layout --- */
+  --max: var(--layout-max);
+
+  /* --- Button system (used by .btn, .showcase-btn, .social-btn) --- */
+  --btn-font-size: 0.875rem;
+  --btn-font-size-sm: 0.8rem;
+  --btn-padding-y: 0.85rem;
+  --btn-padding-x: 1.5rem;
+  --btn-radius: var(--radius-pill);
+  --btn-primary-fg: var(--color-bg-base);
+  --btn-primary-bg: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-deep) 100%);
+  --btn-primary-shadow: var(--shadow-glow-primary);
+  --btn-primary-shadow-hover: var(--shadow-glow-primary-lg);
+  --btn-ghost-border: var(--color-border-strong);
+  --btn-ghost-bg: var(--color-bg-elevated);
+
+  /* --- Card system --- */
+  --card-radius: calc(var(--radius-md) + 4px);
+  --card-radius-sm: var(--radius-lg);
+  --card-border: 1px solid var(--color-border);
+  --card-bg: linear-gradient(165deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.015) 100%);
+  --card-shadow: var(--shadow-sm), var(--shadow-inset-hairline);
+  --card-transition: transform var(--duration-slow) var(--ease-out), border-color var(--duration-base)
+      var(--ease-default), box-shadow var(--duration-slow) var(--ease-out);
 }
 
 @media (max-width: 640px) {
   :root {
     font-size: 16px;
+    --section-padding-y: clamp(2.35rem, 8vw, 3.25rem);
+    --section-padding-y-hero: clamp(2.35rem, 11vw, 4.25rem);
+    --section-gap-after-title: 2rem;
   }
 }
 
@@ -48,6 +220,37 @@
 body {
   margin: 0;
   min-height: 100svh;
+  font-family: var(--font-ui);
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg-base);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+/* Readable wrapping on narrow viewports */
+p,
+.section__lead,
+.about__paragraph,
+.contact__lead,
+.showcase-card__impact {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.section__title,
+.hero__display {
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 #root {
@@ -55,32 +258,98 @@ body {
 }
 
 a {
-  color: var(--accent);
+  color: var(--color-primary);
   text-underline-offset: 3px;
 }
 
 a:hover {
-  color: var(--accent-hover);
+  color: var(--color-primary-base);
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--color-primary);
   outline-offset: 3px;
+}
+
+/* Primary controls: clearer ring on dark UI */
+.btn:focus-visible,
+.showcase-btn:focus-visible,
+.social-btn:focus-visible,
+.site-nav a:focus-visible {
+  outline-color: var(--color-primary);
+  outline-offset: 3px;
+}
+
+.site-nav a.is-active:focus-visible {
+  outline-color: var(--color-bg-base);
+  outline-offset: 2px;
 }
 
 .skip-link {
   position: absolute;
   left: -9999px;
   top: 0;
-  z-index: 100;
-  padding: 0.75rem 1rem;
-  background: var(--paper-deep);
-  color: var(--ink);
-  border: 2px solid var(--ink);
-  box-shadow: var(--shadow-hard);
+  z-index: 200;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: var(--text-body-sm);
 }
 
 .skip-link:focus {
-  left: 1rem;
-  top: 1rem;
+  left: var(--space-4);
+  top: var(--space-4);
+}
+
+/* Scroll reveal: transform + opacity only (GPU-friendly) */
+.reveal--rise {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity var(--duration-reveal) var(--ease-out),
+    transform var(--duration-reveal) var(--ease-out);
+}
+
+.reveal--rise.reveal--visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.reveal--fade {
+  opacity: 0;
+  transform: translate3d(0, 8px, 0);
+  transition:
+    opacity var(--duration-reveal) var(--ease-out),
+    transform var(--duration-reveal) var(--ease-out);
+}
+
+.reveal--fade.reveal--visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.reveal--soft {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  transition:
+    opacity var(--duration-reveal) var(--ease-out),
+    transform var(--duration-reveal) var(--ease-out);
+}
+
+.reveal--soft.reveal--visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal--rise,
+  .reveal--fade,
+  .reveal--soft {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

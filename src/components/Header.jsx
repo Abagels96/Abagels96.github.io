@@ -1,16 +1,16 @@
-const nav = [
-  { href: '#about', label: 'About' },
-  { href: '#stack', label: 'Stack' },
-  { href: '#portfolios', label: 'Portfolios' },
-  { href: '#connect', label: 'Contact' },
+const NAV = [
+  { id: 'about', href: '#about', label: 'About' },
+  { id: 'work', href: '#work', label: 'Work' },
+  { id: 'skills', href: '#skills', label: 'Skills' },
+  { id: 'contact', href: '#contact', label: 'Contact' },
 ]
 
-export function Header({ name }) {
+export function Header({ name, activeId }) {
   const initial = name.charAt(0)
 
   return (
     <header className="site-header">
-      <a className="site-logo" href="#top" aria-label={`${name} - top of page`}>
+      <a className="site-logo" href="#hero" aria-label={`${name}, back to top`}>
         <span className="site-logo__mark" aria-hidden="true">
           {initial}
         </span>
@@ -18,9 +18,15 @@ export function Header({ name }) {
       </a>
       <nav className="site-nav" aria-label="Primary">
         <ul>
-          {nav.map((item) => (
+          {NAV.map((item) => (
             <li key={item.href}>
-              <a href={item.href}>{item.label}</a>
+              <a
+                href={item.href}
+                className={activeId === item.id ? 'is-active' : undefined}
+                aria-current={activeId === item.id ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
             </li>
           ))}
         </ul>
