@@ -1,4 +1,4 @@
-# Abigail Bales: portfolio site
+# Abigail Bales — portfolio site
 
 Personal portfolio built with **React** and **Vite**, deployed to **GitHub Pages** from this repository (`username.github.io`).
 
@@ -7,35 +7,62 @@ Personal portfolio built with **React** and **Vite**, deployed to **GitHub Pages
 - [React](https://react.dev/) 19
 - [Vite](https://vite.dev/) 8
 - [ESLint](https://eslint.org/) (flat config)
+- [Playwright](https://playwright.dev/) (dev only — optional screenshot capture for project cards)
+
+## Features
+
+- **Content** driven from a single module (`src/content.js`).
+- **Dark / light theme** with system preference (`prefers-color-scheme`) until the user picks a mode; choice is stored in `localStorage` under `theme`.
+- **Responsive layout** including a mobile nav overlay and safe-area–aware spacing.
+- **Portfolio previews** as static PNGs under `public/projects/` (generated from each item’s `liveUrl`).
 
 ## Scripts
 
-| Command        | Description                                      |
-| -------------- | ------------------------------------------------ |
-| `npm install`  | Install dependencies                             |
-| `npm run dev`  | Start dev server (frees ports 5173–5176 first)   |
-| `npm run build`| Production build to `dist/`                      |
-| `npm run preview` | Serve `dist/` locally                         |
-| `npm run lint` | Run ESLint                                       |
+| Command | Description |
+|--------|-------------|
+| `npm install` | Install dependencies |
+| `npm run dev` | Start dev server (frees ports 5173–5176 first) |
+| `npm run build` | Production build to `dist/` |
+| `npm run preview` | Serve `dist/` locally |
+| `npm run lint` | Run ESLint |
+| `npm run capture:previews` | Visit each portfolio `liveUrl` with Playwright and write `public/projects/{id}-preview.png` |
+
+After changing portfolio URLs or when you want fresher thumbnails, run **`npm run capture:previews`** (requires Chromium: `npx playwright install chromium` once). Commit the PNGs so GitHub Pages serves them without running Playwright in CI.
 
 The dev script uses [kill-port](https://www.npmjs.com/package/kill-port) so Vite can bind to **127.0.0.1:5173** without silent port drift when old Node processes are still running.
 
+## Project layout
+
+| Path | Notes |
+|------|--------|
+| `src/content.js` | Copy: meta, about, skills, portfolio items, contact, social links |
+| `src/components/` | Page sections and UI |
+| `src/index.css` | Light theme tokens and global base styles |
+| `src/theme-dark.css` | Dark theme overrides (`[data-theme="dark"]`) |
+| `src/App.css` | Layout and component styles |
+| `src/hooks/useTheme.js` | Theme resolution and toggle |
+| `public/favicon.svg` | SVG favicon (aligned with header “A” mark) |
+| `public/projects/` | Preview PNGs + SVG fallbacks for portfolio cards |
+| `scripts/capture-portfolio-previews.mjs` | Playwright capture script |
+
 ## Editing content
 
-Most copy and lists live in **`src/content.js`**:
+Most copy lives in **`src/content.js`**:
 
-- `meta`: name, title, location, tagline, LinkedIn URL, GitHub profile URL
-- `stackAreas`: unified stack cards (languages + frameworks per area)
-- `portfolioItems`: portfolio entries (title, description, links)
-- `workflowNote`: short “how I work” aside
+- **`meta`** — name, title, location, hero headline, CTAs, etc.
+- **`about`** — section title and paragraphs
+- **`portfolioIntro`** — eyebrow, title, lead for the work section
+- **`portfolioItems`** — each project: `id`, `title`, `impact`, `stack`, `liveUrl`, `githubUrl`, `image` (e.g. `/projects/{id}-preview.png`)
+- **`skillsIntro`** / **`skillGroups`** — skills section copy
+- **`contact`** / **`social`** — footer and links
 
 Components under **`src/components/`** handle layout; adjust **`src/App.css`** and **`src/index.css`** for styling.
 
 ## Deploying to GitHub Pages
 
-**Local `npm run preview` works** because it serves **`dist/`** after a build. **GitHub** only shows the site if Pages is serving the **same built files**, not the repo root (which contains dev `index.html` → `/src/main.jsx` and **looks blank**).
+**Local `npm run preview`** works because it serves **`dist/`** after a build. **GitHub** only shows the site if Pages is serving the **built** output from Actions, not the repo root (which contains dev `index.html` → `/src/main.jsx` and **looks blank**).
 
-**`dist/` is gitignored**, so the live site must come from **CI** (or a manual upload of `dist/`).
+**`dist/` is gitignored**, so the live site comes from **CI** (or a manual upload of `dist/`).
 
 ### GitHub repository setup (required)
 
@@ -46,20 +73,20 @@ That **View Source** line (`<script … src="/src/main.jsx">`) means GitHub Page
 | 1 | **Repository name** | **`Abagels96.github.io`** (username + `.github.io`) for **`https://abagels96.github.io/`**. |
 | 2 | **Visibility** | Usually **Public** on a free account for user Pages. |
 | 3 | **Actions** | **Settings → Actions → General** → allow **Actions** for this repo. |
-| 4 | **Pages source (fixes `/src/main.jsx`)** | **Settings → Pages → Build and deployment** → **Source: GitHub Actions** (not “Deploy from a branch” with **`main` / (root)**). Pick the workflow **“Deploy static site to Pages”** if GitHub asks. **Save.** |
-| 5 | **Run deploy** | Push to **`main`** or **Actions → Deploy static site to Pages → Run workflow**. First run may ask you to **approve** the **`github-pages`** environment; open the run and click **Review deployments** / **Approve** if needed. |
+| 4 | **Pages source** | **Settings → Pages → Build and deployment** → **Source: GitHub Actions** (not “Deploy from a branch” with **`main` / (root)**). Pick the workflow **“Deploy static site to Pages”** if GitHub asks. **Save.** |
+| 5 | **Run deploy** | Merge to **`main`** (or **`master`**) or **Actions → Deploy static site to Pages → Run workflow**. First run may ask you to **approve** the **`github-pages`** environment. |
 | 6 | **Wait** | 1–5 minutes, then hard-refresh (Ctrl+F5). |
 
 **Verify:** **View Page Source** on the live site should show **`<script … src="/assets/index-….js">`**, not **`/src/main.jsx`**.
 
 ### How deployment works
 
-The workflow **`.github/workflows/deploy-pages.yml`** runs on push to **`main`** or **`master`** (and **Run workflow**):
+The workflow **`.github/workflows/deploy-pages.yml`** runs on **push to `main` or `master`** (and **Run workflow**):
 
 1. `npm ci` → `npm run build`
 2. Publishes **`dist/`** with GitHub’s official Pages actions ([upload-pages-artifact](https://github.com/actions/upload-pages-artifact) + [deploy-pages](https://github.com/actions/deploy-pages)).
 
-No `gh-pages` branch is required for this flow.
+Feature branches must be **merged into `main`** (or the default branch) for automatic deploy.
 
 ### If the site still doesn’t update
 
