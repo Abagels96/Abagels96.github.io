@@ -10,7 +10,7 @@ export function Header({ name }) {
 
   return (
     <header className="site-header">
-      <a className="site-logo" href="#top" aria-label={`${name} — top of page`}>
+      <a className="site-logo" href="#top" aria-label={`${name} - top of page`}>
         <span className="site-logo__mark" aria-hidden="true">
           {initial}
         </span>

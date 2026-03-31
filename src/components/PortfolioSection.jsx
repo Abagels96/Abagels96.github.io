@@ -14,7 +14,7 @@ export function PortfolioSection({ items }) {
       </div>
 
       {items.length === 0 ? (
-        <p className="portfolio-empty">Nothing here yet — add items to <code>portfolioItems</code>.</p>
+        <p className="portfolio-empty">Nothing here yet. Add items to <code>portfolioItems</code>.</p>
       ) : (
         <ul className="portfolio-list">
           {items.map((item) => (

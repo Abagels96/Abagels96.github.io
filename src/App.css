@@ -1,4 +1,4 @@
-/* Subtle paper grain — reads as “physical” rather than flat SaaS UI */
+/* Subtle paper grain: reads as physical rather than flat SaaS UI */
 .page {
   position: relative;
   min-height: 100svh;
@@ -25,7 +25,7 @@ main {
   flex: 1;
 }
 
-/* ——— Header: hard-edge mark + restrained nav ——— */
+/* --- Header: hard-edge mark + restrained nav --- */
 
 .site-header {
   position: sticky;
@@ -104,7 +104,7 @@ main {
   }
 }
 
-/* ——— Hero: split name + offset frame (not a generic gradient orb) ——— */
+/* --- Hero: split name + offset frame (not a generic gradient orb) --- */
 
 .hero {
   max-width: calc(var(--max) + 4rem);
@@ -247,7 +247,7 @@ main {
   font-size: 0.9375rem;
 }
 
-/* ——— Section scaffolding ——— */
+/* --- Section scaffolding --- */
 
 .panel {
   max-width: calc(var(--max) + 4rem);
@@ -307,7 +307,7 @@ main {
   color: var(--ink);
 }
 
-/* ——— Bento stack ——— */
+/* --- Bento stack --- */
 
 .bento {
   display: grid;
@@ -375,7 +375,7 @@ main {
   }
 }
 
-/* ——— Portfolios ——— */
+/* --- Portfolios --- */
 
 .portfolio-list {
   list-style: none;
@@ -449,7 +449,7 @@ main {
   border-radius: 3px;
 }
 
-/* ——— Workflow aside ——— */
+/* --- Workflow aside --- */
 
 .workflow {
   max-width: calc(var(--max) + 4rem);
@@ -477,7 +477,7 @@ main {
   background: linear-gradient(90deg, var(--accent-tint), transparent 40%);
 }
 
-/* ——— Footer / Contact (#3 — matches .panel sections #1–2) ——— */
+/* --- Footer / Contact (#3, matches .panel sections #1-2) --- */
 
 .site-footer {
   margin-top: auto;

@@ -8,7 +8,7 @@ export function StackSection({ areas }) {
         <div>
           <h2 id="stack-heading">Stack</h2>
           <p className="section-head__lead">
-            Languages, frameworks, and tooling — grouped by how I work across the stack.
+            Languages, frameworks, and tooling, grouped by how I work across the stack.
           </p>
         </div>
       </div>

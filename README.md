@@ -1,4 +1,4 @@
-# Abigail Bales — portfolio site
+# Abigail Bales: portfolio site
 
 Personal portfolio built with **React** and **Vite**, deployed to **GitHub Pages** from this repository (`username.github.io`).
 
@@ -24,22 +24,22 @@ The dev script uses [kill-port](https://www.npmjs.com/package/kill-port) so Vite
 
 Most copy and lists live in **`src/content.js`**:
 
-- `meta` — name, title, location, tagline, LinkedIn URL, GitHub profile URL
-- `stackAreas` — unified stack cards (languages + frameworks per area)
-- `portfolioItems` — portfolio entries (title, description, links)
-- `workflowNote` — short “how I work” aside
+- `meta`: name, title, location, tagline, LinkedIn URL, GitHub profile URL
+- `stackAreas`: unified stack cards (languages + frameworks per area)
+- `portfolioItems`: portfolio entries (title, description, links)
+- `workflowNote`: short “how I work” aside
 
 Components under **`src/components/`** handle layout; adjust **`src/App.css`** and **`src/index.css`** for styling.
 
 ## Deploying to GitHub Pages
 
-**Local `npm run preview` works** because it serves **`dist/`** after a build. **GitHub** only shows the site if Pages is serving the **same built files** — not the repo root (which contains dev `index.html` → `/src/main.jsx` and **looks blank**).
+**Local `npm run preview` works** because it serves **`dist/`** after a build. **GitHub** only shows the site if Pages is serving the **same built files**, not the repo root (which contains dev `index.html` → `/src/main.jsx` and **looks blank**).
 
 **`dist/` is gitignored**, so the live site must come from **CI** (or a manual upload of `dist/`).
 
 ### GitHub repository setup (required)
 
-That **View Source** line (`<script … src="/src/main.jsx">`) means GitHub Pages is still publishing the **`main`** branch **root** — the **dev** `index.html`, not the Vite **build**. The live site must come from the workflow that uploads **`dist/`**.
+That **View Source** line (`<script … src="/src/main.jsx">`) means GitHub Pages is still publishing the **`main`** branch **root**: the **dev** `index.html`, not the Vite **build**. The live site must come from the workflow that uploads **`dist/`**.
 
 | Step | Where | What to set |
 |------|--------|-------------|
@@ -47,7 +47,7 @@ That **View Source** line (`<script … src="/src/main.jsx">`) means GitHub Page
 | 2 | **Visibility** | Usually **Public** on a free account for user Pages. |
 | 3 | **Actions** | **Settings → Actions → General** → allow **Actions** for this repo. |
 | 4 | **Pages source (fixes `/src/main.jsx`)** | **Settings → Pages → Build and deployment** → **Source: GitHub Actions** (not “Deploy from a branch” with **`main` / (root)**). Pick the workflow **“Deploy static site to Pages”** if GitHub asks. **Save.** |
-| 5 | **Run deploy** | Push to **`main`** or **Actions → Deploy static site to Pages → Run workflow**. First run may ask you to **approve** the **`github-pages`** environment — open the run and click **Review deployments** / **Approve** if needed. |
+| 5 | **Run deploy** | Push to **`main`** or **Actions → Deploy static site to Pages → Run workflow**. First run may ask you to **approve** the **`github-pages`** environment; open the run and click **Review deployments** / **Approve** if needed. |
 | 6 | **Wait** | 1–5 minutes, then hard-refresh (Ctrl+F5). |
 
 **Verify:** **View Page Source** on the live site should show **`<script … src="/assets/index-….js">`**, not **`/src/main.jsx`**.
@@ -64,7 +64,7 @@ No `gh-pages` branch is required for this flow.
 ### If the site still doesn’t update
 
 - **Actions tab:** open the latest run; fix any red **Build** or **Deploy** step (e.g. `npm ci` failing if `package-lock.json` isn’t committed).
-- **Private repo:** on a free GitHub account, **GitHub Pages may require a public repository** for `username.github.io` — check [GitHub Pages docs](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages) for your plan.
+- **Private repo:** on a free GitHub account, **GitHub Pages may require a public repository** for `username.github.io`. Check [GitHub Pages docs](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages) for your plan.
 - **Cache:** hard-refresh or try an incognito window after a successful deploy.
 
 ### Local check before pushing

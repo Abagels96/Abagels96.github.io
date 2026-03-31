@@ -50,7 +50,7 @@ export function ConnectFooter({ name, linkedIn, github }) {
             <h2 id="contact-heading">Contact</h2>
             <p className="section-head__lead">
               If you&apos;re hiring, collaborating, or want to talk architecture and product delivery,
-              reach out on LinkedIn — or browse code and activity on GitHub.
+              reach out on LinkedIn, or browse code and activity on GitHub.
             </p>
           </div>
         </div>

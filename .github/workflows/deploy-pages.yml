@@ -2,7 +2,7 @@
 #
 # REQUIRED on GitHub:
 #   Settings → Pages → Build and deployment → Source: GitHub Actions
-# (Not "Deploy from a branch" pointing at main — that serves dev index.html → /src/main.jsx)
+# (Not "Deploy from a branch" pointing at main: that serves dev index.html → /src/main.jsx)
 #
 # First run: you may need to approve the "github-pages" environment once (Actions tab).
 
