@@ -29,19 +29,20 @@ export const skillGroups = {
   core: {
     label: 'Core Stack',
     intro:
-      'What I reach for first on full-stack web work: typed UI, a modern React surface, and data that outlasts the first deploy.',
+      'Typed UI with React and Next.js for most web work, plus Node and Spring Boot when the product needs APIs, auth, and durable data.',
     highlights: ['TypeScript', 'React', 'Next.js'],
-    rest: ['Node.js', 'PostgreSQL', 'Git'],
+    rest: ['Node.js', 'Spring Boot', 'Git'],
   },
   supporting: {
     label: 'Supporting Tools',
-    intro: 'Pulled in when deployment, schema, or integration work needs them, not sprinkled by default.',
-    items: ['Tailwind CSS', 'Docker', 'AWS', 'Prisma', 'GraphQL', 'Python'],
+    intro:
+      'Tailwind for layout, Zustand and Zod when state and validation matter, Vite for lighter builds, and MySQL, Docker, or static hosts when deploy and data need a clear home.',
+    items: ['Tailwind CSS', 'Zustand', 'Zod', 'Vite', 'MySQL', 'Docker', 'GitHub Pages'],
   },
   exploring: {
     label: 'Currently Exploring',
     intro: 'Small bets, not a roadmap slide.',
-    items: ['React Compiler', 'Edge runtimes', 'Zustand'],
+    items: ['React Compiler', 'Edge runtimes', 'TanStack Query'],
   },
 }
 
