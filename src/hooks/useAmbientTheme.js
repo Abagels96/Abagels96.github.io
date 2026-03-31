@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 /**
- * Moves soft gold / indigo glow orbs based on scroll section (pairs with useActiveSection).
+ * Moves soft indigo / violet glow orbs based on scroll section (pairs with useActiveSection).
  * Sets CSS custom properties on :root; no layout thrash. Respects reduced motion via CSS.
  */
 const AMBIENT_BY_SECTION = {

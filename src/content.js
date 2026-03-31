@@ -73,7 +73,7 @@ export const portfolioItems = [
       'Cut sign-up-to-dashboard friction to a single flow on Railway, so real users could track care without wiring spreadsheets.',
     stack: ['Full-stack', 'Auth', 'Railway'],
     liveUrl: 'https://momtracker.up.railway.app/login',
-    githubUrl: 'https://github.com/Abagels96',
+    githubUrl: 'https://github.com/Abagels96/Assignment15',
     image: '/projects/mom-self-care-tracker.svg',
     featured: true,
   },
