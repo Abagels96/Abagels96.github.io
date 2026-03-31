@@ -72,7 +72,7 @@ export const portfolioItems = [
     title: 'Signal Desk',
     impact:
       'Turned a blank canvas into a shippable writing workspace: drafts, templates, and planning without waiting on a backend.',
-    stack: ['React', 'GitHub Pages', 'UX'],
+    stack: ['Next.js', 'Tailwind v4', 'Zustand'],
     liveUrl: 'https://abagels96.github.io/signal-desk',
     githubUrl: 'https://github.com/Abagels96/signal-desk',
     image: '/projects/signal-desk-preview.png',
@@ -82,7 +82,7 @@ export const portfolioItems = [
     title: 'AbailsShop',
     impact:
       'Proved storefront and admin flows end-to-end with mock data, so swapping in real payment and inventory is a config change, not a rewrite.',
-    stack: ['E-commerce', 'React', 'Mock APIs'],
+    stack: ['Next.js', 'Zustand', 'Zod'],
     liveUrl: 'https://abagels96.github.io/ecommerce',
     githubUrl: 'https://github.com/Abagels96/ecommerce',
     image: '/projects/abailsshop-preview.png',
@@ -92,7 +92,7 @@ export const portfolioItems = [
     title: 'Orbit Money',
     impact:
       'Made budgets and goals legible in one screen so stakeholders could stress-test the product story before API spend.',
-    stack: ['Dashboard', 'Local-first', 'React'],
+    stack: ['Next.js', 'TypeScript', 'Tailwind v4'],
     liveUrl: 'https://abagels96.github.io/orbit-money',
     githubUrl: 'https://github.com/Abagels96/orbit-money',
     image: '/projects/orbit-money-preview.png',
@@ -102,17 +102,17 @@ export const portfolioItems = [
     title: "Mom's Self-Care Tracker",
     impact:
       'Cut sign-up-to-dashboard friction to a single flow on Railway, so real users could track care without wiring spreadsheets.',
-    stack: ['Full-stack', 'Auth', 'Railway'],
+    stack: ['Spring Boot', 'Spring Security', 'MySQL'],
     liveUrl: 'https://momtracker.up.railway.app/login',
     githubUrl: 'https://github.com/Abagels96/Assignment15',
     image: '/projects/mom-self-care-tracker-preview.png',
   },
   {
     id: 'portfolio-next',
-    title: 'Portfolio (Next.js)',
+    title: 'Portfolio site',
     impact:
-      'Locked in a deployable Next.js + TS baseline with lint and Tailwind v4, so the marketing site can grow without another scaffold.',
-    stack: ['Next.js', 'TypeScript', 'Tailwind v4'],
+      'Single-page marketing site with React and Vite, light/dark theme, and GitHub Pages deploy—content-driven copy and room to grow without a new scaffold.',
+    stack: ['React', 'Vite', 'GitHub Pages'],
     liveUrl: 'https://abagels96.github.io',
     githubUrl: 'https://github.com/Abagels96/Abagels96.github.io',
     image: '/projects/portfolio-next-preview.png',
