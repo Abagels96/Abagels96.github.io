@@ -9,6 +9,7 @@ import { ConnectFooter } from './components/ConnectFooter.jsx'
 import { SECTION_IDS } from './constants/sections.js'
 import { useActiveSection } from './hooks/useActiveSection.js'
 import { useAmbientTheme } from './hooks/useAmbientTheme.js'
+import { useTheme } from './hooks/useTheme.js'
 import {
   meta,
   about,
@@ -23,6 +24,7 @@ import {
 function App() {
   const activeId = useActiveSection(SECTION_IDS)
   useAmbientTheme(activeId)
+  const { theme, toggleTheme } = useTheme()
 
   return (
     <div id="top" className="page">
@@ -30,7 +32,7 @@ function App() {
         Skip to content
       </a>
       <AmbientLayer />
-      <Header name={meta.name} activeId={activeId} />
+      <Header name={meta.name} activeId={activeId} theme={theme} onToggleTheme={toggleTheme} />
       <main id="main-content">
         <Hero
           name={meta.name}

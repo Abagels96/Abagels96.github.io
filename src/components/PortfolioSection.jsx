@@ -59,9 +59,7 @@ export function PortfolioSection({ intro, items }) {
             {items.map((item, index) => (
               <li key={item.id} className="showcase-grid__cell">
                 <Reveal delay={index * 55}>
-                  <article
-                    className={`showcase-card ${item.featured ? 'showcase-card--featured' : ''}`.trim()}
-                  >
+                  <article className="showcase-card">
                     <div className="showcase-card__media">
                       {item.image ? (
                         <img
@@ -70,6 +68,12 @@ export function PortfolioSection({ intro, items }) {
                           alt=""
                           loading="lazy"
                           decoding="async"
+                          onError={(e) => {
+                            const el = e.currentTarget
+                            if (el.dataset.fallbackApplied === '1') return
+                            el.dataset.fallbackApplied = '1'
+                            el.src = `/projects/${item.id}.svg`
+                          }}
                         />
                       ) : (
                         <div className="showcase-card__placeholder" aria-hidden="true">
@@ -80,9 +84,6 @@ export function PortfolioSection({ intro, items }) {
                     </div>
 
                     <div className="showcase-card__body">
-                      {item.featured ? (
-                        <span className="showcase-card__badge">Featured</span>
-                      ) : null}
                       <h3 className="showcase-card__title">{item.title}</h3>
                       <p className="showcase-card__impact">{item.impact}</p>
 

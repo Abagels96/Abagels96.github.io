@@ -56,27 +56,17 @@ export const skillsIntro = {
 /** Section heading above the project grid */
 export const portfolioIntro = {
   eyebrow: 'Case studies',
-  title: 'Featured work',
+  title: 'Selected work',
   lead:
     'Products and experiments where the goal was clear delivery: ship something usable, measurable, and easy to pick up next.',
 }
 
 /**
- * Featured work: add `image` paths under /public/projects/ (see sample SVGs).
+ * Portfolio work: preview images are PNGs captured from `liveUrl` (see
+ * npm run capture:previews). SVGs with the same `id` are kept as fallbacks.
  * `githubUrl` can point at a specific repo or your profile when code is private.
  */
 export const portfolioItems = [
-  {
-    id: 'mom-self-care-tracker',
-    title: "Mom's Self-Care Tracker",
-    impact:
-      'Cut sign-up-to-dashboard friction to a single flow on Railway, so real users could track care without wiring spreadsheets.',
-    stack: ['Full-stack', 'Auth', 'Railway'],
-    liveUrl: 'https://momtracker.up.railway.app/login',
-    githubUrl: 'https://github.com/Abagels96/Assignment15',
-    image: '/projects/mom-self-care-tracker.svg',
-    featured: true,
-  },
   {
     id: 'signal-desk',
     title: 'Signal Desk',
@@ -85,19 +75,7 @@ export const portfolioItems = [
     stack: ['React', 'GitHub Pages', 'UX'],
     liveUrl: 'https://abagels96.github.io/signal-desk',
     githubUrl: 'https://github.com/Abagels96/signal-desk',
-    image: '/projects/signal-desk.svg',
-    featured: true,
-  },
-  {
-    id: 'orbit-money',
-    title: 'Orbit Money',
-    impact:
-      'Made budgets and goals legible in one screen so stakeholders could stress-test the product story before API spend.',
-    stack: ['Dashboard', 'Local-first', 'React'],
-    liveUrl: 'https://abagels96.github.io/orbit-money',
-    githubUrl: 'https://github.com/Abagels96/orbit-money',
-    image: '/projects/orbit-money.svg',
-    featured: false,
+    image: '/projects/signal-desk-preview.png',
   },
   {
     id: 'abailsshop',
@@ -107,8 +85,27 @@ export const portfolioItems = [
     stack: ['E-commerce', 'React', 'Mock APIs'],
     liveUrl: 'https://abagels96.github.io/ecommerce',
     githubUrl: 'https://github.com/Abagels96/ecommerce',
-    image: '/projects/abailsshop.svg',
-    featured: false,
+    image: '/projects/abailsshop-preview.png',
+  },
+  {
+    id: 'orbit-money',
+    title: 'Orbit Money',
+    impact:
+      'Made budgets and goals legible in one screen so stakeholders could stress-test the product story before API spend.',
+    stack: ['Dashboard', 'Local-first', 'React'],
+    liveUrl: 'https://abagels96.github.io/orbit-money',
+    githubUrl: 'https://github.com/Abagels96/orbit-money',
+    image: '/projects/orbit-money-preview.png',
+  },
+  {
+    id: 'mom-self-care-tracker',
+    title: "Mom's Self-Care Tracker",
+    impact:
+      'Cut sign-up-to-dashboard friction to a single flow on Railway, so real users could track care without wiring spreadsheets.',
+    stack: ['Full-stack', 'Auth', 'Railway'],
+    liveUrl: 'https://momtracker.up.railway.app/login',
+    githubUrl: 'https://github.com/Abagels96/Assignment15',
+    image: '/projects/mom-self-care-tracker-preview.png',
   },
   {
     id: 'portfolio-next',
@@ -118,8 +115,7 @@ export const portfolioItems = [
     stack: ['Next.js', 'TypeScript', 'Tailwind v4'],
     liveUrl: 'https://abagels96.github.io',
     githubUrl: 'https://github.com/Abagels96/Abagels96.github.io',
-    image: '/projects/portfolio-next.svg',
-    featured: false,
+    image: '/projects/portfolio-next-preview.png',
   },
 ]
 
